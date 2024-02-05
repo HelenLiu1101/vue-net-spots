@@ -1,5 +1,12 @@
 <template>
     <h2>台北市景點資料</h2>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item" v-for="(value, index) in result.totalPages" :key="index" @click="pagingHandler(value)">
+                <a :class="{ 'page-link': true, 'currentPage': terms.page === value }" href="#">{{ value }}</a>
+            </li>
+        </ul>
+    </nav>
     <div class="row row-cols-1 row-cols-md-3 g-4">
         <div class="col" v-for="{ spotId, spotDescription, address, spotImage, spotTitle } in result.spotsResult"
             :key="spotId">
@@ -24,11 +31,11 @@ import { onMounted, reactive } from 'vue';
 //reactive
 //搜尋、分頁、排序的條件
 const terms = reactive({
-    "keyword": "北投",
+    "keyword": "公園",
     "categoryId": 0,
     "sortBy": "spotId",
     "sortType": "asc",
-    "page": 4,
+    "page": 1,
     "pageSize": 9
 });
 
@@ -53,7 +60,11 @@ const loadSpots = async () => {
 }
 
 
-
+//分頁
+const pagingHandler = page => {
+    terms.page = page;
+    loadSpots();
+}
 
 
 
@@ -78,4 +89,12 @@ onMounted(() => {
 
 </script>
     
-<style></style>
+<style scoped>
+.pagination li {
+    cursor: pointer;
+}
+
+.currentPage {
+    background-color: lightblue;
+}
+</style>
