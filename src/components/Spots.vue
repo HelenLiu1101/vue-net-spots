@@ -1,5 +1,21 @@
 <template>
     <h2>台北市景點資料</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col" v-for="{ spotId, spotDescription, address, spotImage, spotTitle } in result.spotsResult"
+            :key="spotId">
+            <div class="card h-100">
+                <img :src="spotImage" class="card-img-top" :alt="spotTitle">
+                <div class="card-body">
+                    <h5 class="card-title">{{ spotId }} {{ spotTitle }}</h5>
+                    <p class="card-text">{{ spotDescription.length <= 100 ? spotDescription : spotDescription.substring(0,
+                        100) }}...</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-body-secondary">{{ address }}</small>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
     
 <script setup>
@@ -12,7 +28,7 @@ const terms = reactive({
     "categoryId": 0,
     "sortBy": "spotId",
     "sortType": "asc",
-    "page": 1,
+    "page": 4,
     "pageSize": 9
 });
 
@@ -31,8 +47,9 @@ const loadSpots = async () => {
         headers: { 'Content-Type': 'application/json' }
     });
     const datas = await response.json();
-    console.log(datas);
-
+    result.totalPages = datas.totalPages > 8 ? 8 : datas.totalPages;
+    result.spotsResult = datas.spotsResult;
+    //console.log(result);
 }
 
 
