@@ -1,18 +1,19 @@
 <script setup>
 import First from './components/First.vue';
 import HelloWorld from './components/HelloWorld.vue';
-import Home from './components/Home.vue';
-import About from './components/About.vue';
-import Contact from './components/Contact.vue';
+
 </script>
 
 <template>
+  <RouterLink to="/">首頁</RouterLink> |
+  <RouterLink to="/about">關於我們</RouterLink> |
+  <RouterLink to="/contact">聯絡我們</RouterLink> |
+  <hr />
   <h2>Vue Project</h2>
   <First></First>
   <hello-world></hello-world>
-  <Home></Home>
-  <About></About>
-  <Contact></Contact>
+  <hr />
+  <RouterView></RouterView>
 </template>
 
 <style scoped></style>
