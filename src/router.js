@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import Home from "./components/Home.vue";
 import About from "./components/About.vue";
 import Contact from "./components/Contact.vue";
+import Spots from "./components/Spots.vue";
 
 const routes = [
   {
@@ -15,6 +16,10 @@ const routes = [
   {
     path: "/contact", //http://loclhost:5173/contact
     component: Contact,
+  },
+  {
+    path: "/spots", //http://loclhost:5173/spots
+    component: Spots,
   },
 ];
 

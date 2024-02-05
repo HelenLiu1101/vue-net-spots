@@ -19,7 +19,7 @@
                         <RouterLink class="nav-link" to="/contact">聯絡我們</RouterLink>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                        <RouterLink class="nav-link" to="/spots">景點</RouterLink>
                     </li>
                 </ul>
             </div>
