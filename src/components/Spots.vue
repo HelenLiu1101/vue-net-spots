@@ -1,5 +1,6 @@
 <template>
     <h2>台北市景點資料</h2>
+
     <Paging @abcClick="pagingHandler" :totalPages="result.totalPages" :page="terms.page"></Paging>
     <div class="row row-cols-1 row-cols-md-3 g-4">
         <div class="col" v-for="{ spotId, spotDescription, address, spotImage, spotTitle } in result.spotsResult"
